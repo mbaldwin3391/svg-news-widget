@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SVG News Widget</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- Auto-refresh every 30 minutes -->
+<meta http-equiv="refresh" content="1800">
+</head>
+
+<body>
+<div class="widget-container">
+    <h2>Sports Video Group – Latest News</h2>
+    <div id="feed"></div>
+</div>
+
+<script>
+// Your RSS feed from RSS.app
+const FEED_URL = "https://rss.app/feeds/OJr1s55oWj47TWJv.xml";
+
+// Fetch and display feed
+async function loadFeed() {
+    const response = await fetch(FEED_URL);
+    const text = await response.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, "text/xml");
+
+    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5);
+
+    const feedDiv = document.getElementById("feed");
+    feedDiv.innerHTML = items.map(item => {
+        const title = item.querySelector("title")?.textContent || "";
+        const link = item.querySelector("link")?.textContent || "";
+        const description = item.querySelector("description")?.textContent || "";
+
+        return `
+            <div class="news-item">
+                <a href="${link}" target="_blank" class="title">${title}</a>
+                <div class="description">${description}</div>
+            </div>
+        `;
+    }).join("");
+}
+
+loadFeed();
+</script>
+
+</body>
+</html>

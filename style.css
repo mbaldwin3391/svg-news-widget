@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.widget-container {
+    padding: 15px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+.news-item {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.description {
+    color: #444;
+    font-size: 14px;
+    margin-top: 4px;
+    line-height: 1.4em;
+}
